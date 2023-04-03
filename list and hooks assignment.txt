@@ -1,0 +1,25 @@
+React Hooks and the component lifecycle
+_____________________________________
+
+
+The useEffect hook can express all combinations of these. To understand how we can use componentWillMount with functional components, first we need to look at how the component manages mounting with useEffect.
+
+const App = () => {
+  useEffect(() => {
+    console.log(
+      "This only happens ONCE. It happens AFTER the initial render."
+    );
+  }, []);
+};
+If you add a return function inside the useEffect function, it is triggered when a component unmount from the DOM. This looks like:
+
+const App = () => {
+  useEffect(() => {
+    return () => {
+      console.log(
+        "This only happens ONCE. 
+         Anything in here is fired on component UNMOUNT."
+      );
+     }
+   }, []);
+};
